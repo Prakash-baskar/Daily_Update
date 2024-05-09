@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// import React from "react";
+// import { Provider } from "react-redux";
 
-function App() {
+import { Provider } from "react-redux";
+import { store } from "./Counter/Reducer";
+import Counter from "./Counter/Counter";
+
+// import TaskInput from "./Component/TaskInput";
+// import TaskList from "./Component/TaskList";
+// import store from "./Component/Store";
+
+
+function App  (){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Provider store={store}>
+    //   <div>
+    //     <h1>Redux Task List</h1>
+    //     <TaskInput/>
+    //     <TaskList/>
+    //   </div>
+    // </Provider>
+    <Provider store={store}>
+      <Counter/>
+    </Provider>
   );
-}
+};
 
 export default App;
