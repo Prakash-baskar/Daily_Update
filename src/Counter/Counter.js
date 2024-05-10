@@ -9,6 +9,9 @@ const Counter = ({ count, Incerement, Decerement, }) => {
             <button onClick={Decerement}>Decerement</button>
             <button onClick={Incerement}>Incerement</button>
             <button>Reset</button>
+            <label>Name:</label>
+            <input></input>
+            <button>Submit</button>
         </div>
         </>
     );
