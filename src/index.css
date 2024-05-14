@@ -143,4 +143,13 @@ form{
   display: flex;
   flex-direction: column;
   gap: 5px; 
+  border: 1px solid;
+  padding: 20px;
+  width: 30%;
+  border-radius: 5px;
+}
+
+table,tr,td,th{
+  border: 1px solid;
+  border-collapse: collapse;
 }

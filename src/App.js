@@ -1,39 +1,29 @@
+
+
 import "./App.css";
-import React from "react";
-// import { Provider } from "react-redux";
 
-import { Provider } from "react-redux";
-import Form from "./Crud/Form";
-import { store } from "./Crud/FormReducer";
-
-// import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FormRedux from "./Redux/FormRedux";
+import FormTable from "./Redux/FormTable";
+import FormEdit from "./Redux/FormEdit";
 
 
 
-// import { Provider } from "react-redux";
-// import { store } from "./Counter/Reducer";
-// import Counter from "./Counter/Counter";
-
-// import TaskInput from "./Component/TaskInput";
-// import TaskList from "./Component/TaskList";
-// import store from "./Component/Store";
 
 
-function App  (){
+
+
+function App  () {
   return (
-    // <Provider store={store}>
-    //   <div>
-    //     <h1>Redux Task List</h1>
-    //     <TaskInput/>
-    //     <TaskList/>
-    //   </div>
-    // </Provider>
-    // <Provider store={store}>
-    //   <Counter/>
-    // </Provider>
-   <Provider store={store}>
-    <Form/>
-   </Provider>
+
+  <BrowserRouter>
+    <Routes>
+       <Route path="/" element={<FormRedux/>}></Route>
+       <Route path="/FormTable" element={<FormTable/>}></Route>
+       {/* <Route path="/FormEdit" element={<FormEdit/>}></Route> */}
+       <Route path="/FormTable/:id/edit" element={<FormEdit/>}></Route>
+    </Routes>
+  </BrowserRouter>
   )
 };
 
