@@ -10,7 +10,7 @@ const FormTable = () => {
 
     useEffect (() =>{
         dispatch(getItem());
-    },[dispatch])
+    },[dispatch]);
 
     const handleDelete = (id) =>{
         dispatch(deleteItem(id));
@@ -21,26 +21,29 @@ const FormTable = () => {
       <table className='th'>
         <thead>
             <tr>
-                <th>Nmae</th>
+                <th>FName</th>
+                <th>LName</th>
+                <th>Age</th>
+                <th>Weight</th>
+                <th>BGroup</th>
+                <th>Email</th>
+                <th>PHNumber</th>
+                <th>Action</th>
             </tr>
         </thead>
        <tbody>
        {users.map((user)=>(
         <tr key={user.id}>
           <td>{user.name}</td>
-         <td> {user.lname}</td>
+          <td> {user.lname}</td>
           <td>{user.age}</td>
           <td>{user.gender}</td>
-          <td>          {user.blood}
-</td>
-          <td>
-          {user.email}
-
-          </td>
-          <td>          {user.number}
-</td>
-          <button onClick={() => handleDelete(user.id)}>Delete</button>
-          <Link to={`/FormTable/${user.id}/edit`}>Edit</Link>
+          <td>{user.blood}</td>
+          <td>{user.email}</td>
+          <td>{user.number}</td>
+          <td><button className='delete' onClick={() => handleDelete(user.id)}>Delete</button>
+          <button className='edit'><Link  to={`/FormTable/${user.id}/edit`}>Edit</Link> </button> </td>
+          <td ></td>
         </tr>
        ))}
        </tbody>

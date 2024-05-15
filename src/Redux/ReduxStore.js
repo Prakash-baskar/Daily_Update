@@ -1,8 +1,9 @@
-import { applyMiddleware, createStore } from "redux";
-import { thunk } from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 import ReducerForm from "./ReducerForm";
 
 
-const store = createStore(ReducerForm,applyMiddleware(thunk))
+const store = configureStore({
+    reducer: ReducerForm
+})
 
 export default store;

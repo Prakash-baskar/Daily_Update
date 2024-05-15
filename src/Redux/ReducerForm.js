@@ -27,17 +27,19 @@ const ReducerForm = (state = initialValue,action) => {
             users:state.users.filter((user) => user.id!==action.payload)
         };    
     
-    case GET_BUY_ITEM:
-        return{
-            ...state,
-            users:action.payload
-        }
 
     case UPDATE_ITEM:
         return{
             ...state,
-            users:action.payload
-        }   
+            user:action.payload
+        }
+        
+        case GET_BUY_ITEM:
+        return{
+            ...state,
+            user:action.payload
+        }
+
         
 
     default:
