@@ -139,29 +139,27 @@ form{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(181, 229, 248);
-  background-image: url(Images/istockphoto-1395533815-1024x1024.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.8;
-  
+  background: rgb(0,159,208);
+background: linear-gradient(86deg, rgba(0,159,208,1) 0%, rgba(1,230,173,1) 100%);
+ 
   
 }
-.heding{
+/* .heding{
   background-color: rgb(174, 200, 250);
-  padding: 5px;
+  padding: 2px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-}
+} */
 .main{
   display: flex;
   flex-direction: column;
   gap: 5px; 
-  border: 1px solid rgb(255, 252, 252);
-  padding: 20px;
+  border: 7px solid rgb(255, 252, 252);
+  padding: 25px;
   width: 25%;
   border-radius: 5px;
   background-color: rgb(243, 241, 239);
   font-size: 20px;
+ 
 }
 input{
   border-top: 0cap;
@@ -192,6 +190,7 @@ table{
   margin-left: 40px;
   height: 15px;
   
+  
 }
 
 
@@ -200,6 +199,9 @@ table{
 .title{
    display: flex;
    justify-content: center;
+   background-image: url(Images/5c0c7f3a062c21ee9bf14f4ecc80a8f8.png);
+   background-repeat:no-repeat;
+   background-size: 13vh;
    
 }
 .register{
@@ -226,7 +228,7 @@ table{
   border-radius: 6px;
 }
 .edit{
-  background-color:rgba(0, 128, 0, 0.801);
+  background-color:rgba(118, 226, 68, 0.952);
   color: white;
   border: none; 
   padding: 10px;
@@ -234,7 +236,8 @@ table{
   
 }
 tbody{
-  background-color: rgb(174, 248, 248);
+  background-color: rgb(188, 235, 253);
+ 
 }
 
 h2{
@@ -242,4 +245,10 @@ h2{
   font-weight: bold;
   text-decoration: underline;
   color: brown;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
 }

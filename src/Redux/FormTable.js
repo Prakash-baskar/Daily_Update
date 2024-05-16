@@ -24,6 +24,7 @@ const FormTable = () => {
                 <th>FName</th>
                 <th>LName</th>
                 <th>Age</th>
+                <th>Gender</th>
                 <th>Weight</th>
                 <th>BGroup</th>
                 <th>Email</th>
@@ -38,12 +39,12 @@ const FormTable = () => {
           <td> {user.lname}</td>
           <td>{user.age}</td>
           <td>{user.gender}</td>
+          <td>{user.weight}</td>
           <td>{user.blood}</td>
           <td>{user.email}</td>
           <td>{user.number}</td>
           <td><button className='delete' onClick={() => handleDelete(user.id)}>Delete</button>
           <button className='edit'><Link  to={`/FormTable/${user.id}/edit`}>Edit</Link> </button> </td>
-          <td ></td>
         </tr>
        ))}
        </tbody>

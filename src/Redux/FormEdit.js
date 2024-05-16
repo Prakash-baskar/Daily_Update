@@ -7,7 +7,8 @@ export default function FormEdit() {
     const [name, setName] = useState('');
     const [lname, setLastName] = useState('');
     const [age, setAge] = useState('');
-    const [gender, setGender] = useState('');
+    const [gender,setGender] = useState('')
+    const [weight, setWeight] = useState('');
     const [blood, setBlood] = useState('');
     const [email, setEmail] = useState('');
     const [number, setNumber] = useState('');
@@ -27,6 +28,7 @@ export default function FormEdit() {
             setLastName(userUpdate.lname || '');
             setAge(userUpdate.age || '');
             setGender(userUpdate.gender || '');
+            setWeight(userUpdate.weight || '');
             setBlood(userUpdate.blood || '');
             setEmail(userUpdate.email || '');
             setNumber(userUpdate.number || '');
@@ -37,16 +39,18 @@ export default function FormEdit() {
         e.preventDefault();
         if (userUpdate) {
             try {
-                dispatch(updateItem(userUpdate.id, { id, name, age, blood, email, number, lname, gender }));
+                dispatch(updateItem(userUpdate.id, { id, name, age, gender, blood, email, number, lname, weight }));
 
             } catch {
                 setName("")
+                setLastName("")
                 setAge("")
+                setGender("")
                 setBlood("")
                 setEmail("")
                 setNumber("")
                 setLastName("")
-                setGender("")
+                setWeight("")
                 
             }
         }
@@ -67,7 +71,17 @@ export default function FormEdit() {
                 <label>Age</label>
                 <input type='number' value={age} onChange={(e) => setAge(e.target.value)} />
                 <label>Gender</label>
-                <input type='text' value={gender} onChange={(e) => setGender(e.target.value)} />
+                    <select
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                    >
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                <label>weight</label>
+                <input type='text' value={weight} onChange={(e) => setWeight(e.target.value)} />
                 <label>Blood Group</label>
                 <input type='text' value={blood} onChange={(e) => setBlood(e.target.value)} />
                 <label>Email</label>
