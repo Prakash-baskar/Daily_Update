@@ -153,9 +153,16 @@ const FormRedux = () => {
         <div>
             <div className='heading'>
                 <h2 className='title'>New Patient Registration</h2>
+                <div className='nav'>
+                    <ul>
+                        <li><a href=''>Form</a></li>
+                        <li ><a href='/FormTable'>Details</a></li>
+                    </ul>
+                </div>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className='main'>
+                    <div><h3>Registration Form</h3></div>
                     <label>First Name</label>
                     <input
                         type='text'

@@ -58,6 +58,10 @@ export default function FormEdit() {
     };
 
     return (
+        <div>
+             <div className='heading'>
+                <h2 className='title'>Patient Edit Form</h2>
+            </div>
         <form onSubmit={handleSubmit}>
             <div className='main'>
                 <label>FirstName</label>
@@ -91,5 +95,6 @@ export default function FormEdit() {
                 <button className='sub' type='submit'>Submit</button>
             </div>
         </form>
+        </div>
     );
 }

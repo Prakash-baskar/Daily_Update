@@ -1,16 +1,5 @@
 
 
-// import axios from "axios";
-// import { ADD_ITEM } from "./FormTypes"
-
-// export const addItem = (user) =>{
-//     return async(dispatch) =>{
-//         const response = await axios.post('https://65adedce1dfbae409a739505.mockapi.io/patient/patients',user)
-//         dispatch({type:ADD_ITEM,payload:response.data});
-
-//     }
-// }
-
 import axios from "axios";
 import { ADD_ITEM, DELETE_ITEM, GET_BUY_ITEM, GET_ITEM, UPDATE_ITEM } from "./FormTypes"; // Corrected import for action type
 
