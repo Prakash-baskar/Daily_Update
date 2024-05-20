@@ -132,14 +132,14 @@ button.primary.outline{
 body{
   margin: 0;
   padding: 0;
+  
 }
 
 form{
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
- 
+  min-height: 100vh; 
   background: linear-gradient(86deg, rgb(251, 251, 252) 0%, rgb(250, 252, 251) 100%);
  
   
@@ -150,16 +150,29 @@ form{
   font-family: Georgia, 'Times New Roman', Times, serif;
 } */
 .main{
-  display: flex;
-  flex-direction: column;
-  gap: 3px; 
+  /* display: grid;
+  grid-template-columns: auto  auto;
+  gap: 5px; 
   border: 1px solid rgb(231, 228, 228);
   padding: 17px;
-  width: 30%;
+  width: 35%;
   border-radius: 7px;
   background-color: rgba(245, 244, 243, 0.849);
   box-shadow: inset -5px -5px 12px #ffffff, 5px 5px 19px rgba(0, 0, 0, .16);
-  font-size: 18px;
+  font-size: 18px; */
+  display: grid;
+  font-family: sans-serif;
+  gap: 5px;
+  border: 1px solid rgb(231, 228, 228);
+  grid-template-columns: 1fr 1fr;
+  padding: 50px;
+  border-radius: 7px;
+  background-color: rgba(245, 244, 243, 0.849);
+  box-shadow: inset -5px -5px 12px #ffffff, 5px 5px 19px rgba(0, 0, 0, .16);
+}
+.gender{
+  display: flex;
+  gap: 5px;
 }
 h3{
   font-family: 'Gill Sans',;
@@ -167,16 +180,45 @@ h3{
   color: #3498db;
   text-transform: uppercase;
 }
+.labelbot{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 7px;
+}
+*{
+  overflow-x: hidden;
+}
+.alert{
+  position: absolute;
+  top: 0%;
+}
 input{
+
   border-top: 0cap;
   border-left: 0cap;
   border-right: 0cap;
   border: none;
   border-radius: 5px;
-  padding: 6px;
-  background-color: #ecf0f3;
-  box-shadow: inset -5px -5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, .16);
+  padding: 6px ;
+  /* background-color: #ecf0f3; */
+  /* box-shadow: inset -5px -5px 12px #ffffff, 5px 5px 12px rgba(0, 0, 0, .16); */
  
+}
+.edithead{
+  text-align: center;
+  grid-column: span 2;
+  place-self: center;
+  color: #3498db;
+  text-transform: uppercase;
+  font-size: larger;
+}
+.formHead{
+  grid-column: span 2;
+  place-self: center;
+  color: #3498db;
+  text-transform: uppercase;
+  font-size: larger;
 }
 input:focus{
   /* border: none; */
@@ -194,7 +236,8 @@ table,tr,td,th{
 }
 th{
   background-color:lightgray;
-  font-size: 20px;
+  font-size: 15 px;
+  text-align: center;
 }
 td{
   text-align: center;
@@ -238,11 +281,26 @@ a:hover{
 
 .title{
    display: flex;
-   justify-content: center;
-   /* background-image: url(Images/5c0c7f3a062c21ee9bf14f4ecc80a8f8.png);
-   background-repeat:no-repeat;
-   background-size: 13vh; */
-   
+   justify-content: center; 
+}
+.regcen{
+  display: flex;
+  
+  
+}
+.botmbtn{
+   grid-column: span 2;
+   place-self: end;
+   display: flex;
+   gap: 8px;
+}
+.reset{
+  background-color: rgb(247, 182, 44);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
 }
 .register{
    background-color: blue;
@@ -261,11 +319,12 @@ a:hover{
   font-size: 15px;
 }
 .delete{
-  background-color: red;
-  color: white;
+  background-color: red !important;
+  color: white !important;
   border: none; 
   padding: 10px;
   border-radius: 6px;
+  margin-right: 5px;
 }
 .edit{
   background-color:green;
@@ -275,9 +334,9 @@ a:hover{
   padding: 10px;
   border-radius: 7px; 
 }
-.close{
-  background-color:rgb(33, 68, 224);
-  color: white;
+.closed{
+  background-color:rgb(33, 68, 224) !important;
+  color: white !important;
   text-decoration: none;
   border: none; 
   padding: 10px;
@@ -286,19 +345,14 @@ a:hover{
 .nonebtn{
   background-color: transparent !important;
   border: none;
+  padding: 10px;
 }
 tbody{
   background-color: rgba(243, 245, 247, 0.705);
  
 }
 
-h2{
-  font-size: 30px;
-  font-weight: bold;
 
-  color: rgb(99, 88, 88);
-  margin: 0px;
-}
 
 .error {
   color: red;
@@ -326,8 +380,25 @@ h2{
 }
 
 dialog{
-   border: 2px solid ;
-   padding: 35px;
-   border-radius: 10px;
-   font-weight: 500;
+   position: absolute;
+   border: 1px solid black ;
+   /* border-radius: 10px; */
+   /* font-weight: 500; */
+   background-color: rgba(65, 71, 73, 0.288) !important;
+   top: -0.3%;
+   /* left: -80%; */
+   /* width: 100vw; */
+   min-height: 100vh;
+   min-width: 100%;
+   padding: 0%;
+   margin: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+dialog div{
+  border: 1px solid gray;
+  background-color: rgb(247, 249, 250);
+  padding: 50px;
+  border-radius: 8px;
 }

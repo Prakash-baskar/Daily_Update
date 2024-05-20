@@ -26,8 +26,8 @@ const FormTable = () => {
     },[dispatch]);
 
     const showDialog = (id)=>{
-      setSelectDelId(id)
-      setDelVisible(true)
+      setSelectDelId(id);
+      setDelVisible(true);
     }
     const close = () =>{
       setSelectDelId(null)
@@ -39,11 +39,14 @@ const FormTable = () => {
         dispatch(deleteItem(id));
         setDelVisible(false)
     };
+    
   return (
     <>
     { loading && <Loader/>}
     <div className='table'>
-      <h2>Patient Details</h2>
+      <div>
+      <h3>Patient Details</h3>
+      </div>
       <table className='th'>
         <thead>
             <tr>
@@ -51,6 +54,7 @@ const FormTable = () => {
                 <th>LNAME</th>
                 <th>AGE</th>
                 <th>GENDER</th>
+                <th>DATE</th>
                 <th>WEIGHT</th>
                 <th>BGROUP</th>
                 <th>EMAIL</th>
@@ -65,6 +69,7 @@ const FormTable = () => {
           <td> {user.lname}</td>
           <td>{user.age}</td>
           <td>{user.gender}</td>
+          <td>{user.date}</td>
           <td>{user.weight}</td>
           <td>{user.blood}</td>
           <td>{user.email}</td>
@@ -76,12 +81,15 @@ const FormTable = () => {
        ))}
        </tbody>
       </table>
-      {delVisible && (
+      
+      { delVisible && (
 
-        <dialog open>
-          Are you Confirm Delete
+        <dialog className='alert'>
+          <div>
+          Are you Confirm Delete..?
           <button className='delete' onClick={() => handleDelete(selectDelId)}>Yes</button>
-          <button className='close' onClick={close}>No</button>
+          <button className='closed' onClick={close}>No</button>
+          </div>
         </dialog>
       ) }
     </div>

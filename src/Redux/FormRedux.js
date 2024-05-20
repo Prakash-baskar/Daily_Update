@@ -87,6 +87,7 @@ const FormRedux = () => {
     const [email, setEmail] = useState('');
     const [number, setNumber] = useState('');
     const [gender, setGender] = useState('');
+    const [date, setDate] = useState('');
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -95,17 +96,37 @@ const FormRedux = () => {
         e.preventDefault();
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
-            dispatch(addItem({ name, age, blood, email, lname, weight, number, gender }));
+            dispatch(addItem({ name, age, blood, email, lname, weight, number, gender, date }));
             navigate('/FormTable');
         } else {
             setErrors(validationErrors);
         }
     };
 
+    // const handleDateChange = (e) => {
+    //     setDate(e.target.value);
+    // };
+
+    const handleReset = () =>{
+        setName("");
+        setLastName("");
+        setAge("");
+        setBlood("");
+        setEmail("");
+        setGender("");
+        setWeight("");
+        setNumber("");
+        setErrors("");
+    }
+
     const validateForm = () => {
         const errors = {};
+        const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+        const namePattern = /^[A-Za-z\s]+$/;
         if (!name.trim()) {
             errors.name = 'First name is required';
+        }else if (!namePattern.test(name)) {
+            errors.name = 'First name cannot contain numbers';
         }
         if (!lname.trim()) {
             errors.lname = 'Last name is required';
@@ -136,8 +157,20 @@ const FormRedux = () => {
         if (!gender.trim()) {
             errors.gender = 'Gender is required';
         }
+       
+
+        if (!date.match(datePattern)) {
+            errors.date = 'Please enter a valid date in YYYY-MM-DD format';
+        }
         return errors;
     };
+
+    // const validateDate = () => {
+    //     let errors = {};
+       
+
+    //     setErrors(errors);
+    // };
 
     const isValidEmail = (email) => {
         const regex = /\S+@\S+\.\S+/;
@@ -151,18 +184,11 @@ const FormRedux = () => {
 
     return (
         <div>
-            <div className='heading'>
-                <h2 className='title'>New Patient Registration</h2>
-                <div className='nav'>
-                    <ul>
-                        <li><a href=''>Form</a></li>
-                        <li ><a href='/FormTable'>Details</a></li>
-                    </ul>
-                </div>
-            </div>
+            
             <form onSubmit={handleSubmit}>
                 <div className='main'>
-                    <div><h3>Registration Form</h3></div>
+                    <div className='formHead'><span>Registration Form</span></div>
+                    <div className='labelbot'>
                     <label>First Name</label>
                     <input
                         type='text'
@@ -171,7 +197,9 @@ const FormRedux = () => {
                         onChange={(e) => setName(e.target.value)}
                     />
                     {errors.name && <span className="error">{errors.name}</span>}
+                    </div>
 
+                    <div className='labelbot'>
                     <label>Last Name</label>
                     <input 
                         type='text' 
@@ -180,7 +208,9 @@ const FormRedux = () => {
                         onChange={(e) => setLastName(e.target.value)}
                     />
                     {errors.lname && <span className="error">{errors.lname}</span>}
+                    </div>
 
+                    <div className='labelbot'>
                     <label>Age</label>
                     <input 
                         type='number' 
@@ -189,19 +219,64 @@ const FormRedux = () => {
                         onChange={(e) => setAge(e.target.value)}
                     />
                     {errors.age && <span className="error">{errors.age}</span>}
+                    </div>
 
+                    <div className='labelbot'>
                     <label>Gender</label>
-                    <select
-                        value={gender}
-                        onChange={(e) => setGender(e.target.value)}
-                    >
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <div className='gender'>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                value="male"
+                                checked={gender === "male"}
+                                onChange={(e) => setGender(e.target.value)}
+                            />
+                            Male
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                value="female"
+                                checked={gender === "female"}
+                                onChange={(e) => setGender(e.target.value)}
+                            />
+                            Female
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                value="other"
+                                checked={gender === "other"}
+                                onChange={(e) => setGender(e.target.value)}
+                            />
+                            Other
+                        </label>
+                    </div>
                     {errors.gender && <span className="error">{errors.gender}</span>}
+                    </div>
+                    </div>
 
+                    <div>
+                       <div className='labelbot'>
+                          <label>Date</label>
+                          <input
+                              type="date"
+                              value={date}
+                              onChange={(e) => setDate(e.target.value)}
+                             
+                          />
+                          {errors.date && <span className="error">{errors.date}</span>}
+                       </div>
+                    </div>
+                    
+
+
+                    <div className='labelbot'>
                     <label>Weight</label>
                     <input 
                         type='number'
@@ -210,7 +285,9 @@ const FormRedux = () => {
                         onChange={(e) => setWeight(e.target.value)}
                     />
                     {errors.weight && <span className="error">{errors.weight}</span>}
+                    </div>
 
+                    <div className='labelbot'>
                     <label>Blood Group</label>
                     <input 
                         type='text' 
@@ -219,7 +296,9 @@ const FormRedux = () => {
                         onChange={(e) => setBlood(e.target.value)}
                     />
                     {errors.blood && <span className="error">{errors.blood}</span>}
+                    </div>
 
+                    <div className='labelbot'>
                     <label>Email</label>
                     <input 
                         type='email' 
@@ -228,8 +307,10 @@ const FormRedux = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     {errors.email && <span className="error">{errors.email}</span>}
+                    </div>
 
-                    <label>Phone Number</label>
+                   <div className='labelbot'>
+                   <label>Phone Number</label>
                     <input 
                         type='number' 
                         placeholder='Enter Number'
@@ -237,8 +318,11 @@ const FormRedux = () => {
                         onChange={(e) => setNumber(e.target.value)}
                     />
                     {errors.number && <span className="error">{errors.number}</span>}
-
-                    <button className='register' type='submit'>Register</button>
+                   </div>
+                   <div className='botmbtn'>
+                     <button onClick={handleReset} className='reset' type='button'>Reset</button>
+                     <button className='register' type='submit'>Register</button>
+                   </div>
                 </div>
             </form>
         </div>
